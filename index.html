@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF=8">
+    <title>Jackson's Matchmaker</title>
+</head>
+
+<body>
+<h3>Are You a Match??</h3>
+<p>Created by Jackson Kameron for Introduction for Computer Science 2020
+    Lets see if you and I are a good match. Please give some serious thought to the questions.
+    <br />
+    Please answer on this 1 to 5 scale.
+    5 is right on
+    4 is I agree
+    3 is I do not have an opinion
+    2 is I do not agree
+    1 is no way dude your wrong
+</p>
+
+    
+<label>Chicago Sports teams are the best in the world. Go Bears!!</label><br />
+<select id="q1">
+    <option value="5">Right On!</option>
+    <option value="4">Agree</option>
+    <option value="3">No opinion</option>
+    <option value="2">I do not agree</option>
+    <option value="1">No way dude</option>
+</select>
+<br /><br />
+    <label>The outdoors is the greatest place to be</label><br />
+<select id="q2">
+    <option value="5">Right On!</option>
+    <option value="4">Agree</option>
+    <option value="3">No opinion</option>
+    <option value="2">I do not agree</option>
+    <option value="1">No way dude</option>
+</select>
+<br /><br />
+    <label>The Cubs are cooler than the White Sox</label><br />
+<select id="q3">
+    <option value="5">Right On!</option>
+    <option value="4">Agree</option>
+    <option value="3">No opinion</option>
+    <option value="2">I do not agree</option>
+    <option value="1">No way dude</option>
+</select>
+<br /><br />
+    <label>Pantera is a great band</label><br />
+<select id="q4">
+<option value="5">Right On!</option>
+<option value="4">Agree</option>
+<option value="3">No opinion</option>
+<option value="2">I do not agree</option>
+<option value="1">No way dude</option>
+</select>
+<br /><br />
+    <label>Lifting Weights is fun</label><br />
+<select id="q5">
+    <option value="5">Right On!</option>
+    <option value="4">Agree</option>
+    <option value="3">No opinion</option>
+    <option value="2">I do not agree</option>
+    <option value="1">No way dude</option>
+</select>
+
+<br /><br />
+    <button onclick="calculateCompatability()">Calculate Compatabilty</button>
+    <p id="compatabilty"></p>
+
+<script>
+console.log("Starting Jackson's Matchmaker...");
+
+function calculateCompatability() {
+    console.log("calculateCompatability()");
+
+
+    const DESIRED_RESPONSE = [
+        5,
+        4,
+        1,
+        5,
+        5,
+    ]
+
+    const MAX_SCORE = 25;
+
+    let question1Response = document.getElementById('q1').selectedOptions[0].value;
+    let question2Response = document.getElementById('q2').selectedOptions[0].value;
+    let question3Response = document.getElementById('q3').selectedOptions[0].value;
+    let question4Response = document.getElementById('q4').selectedOptions[0].value;
+    let question5Response = document.getElementById('q5').selectedOptions[0].value;
+
+    let question1Compatabilty = Math.abs(question1Response) - DESIRED_RESPONSE[0];
+    let question2Compatabilty = Math.abs(question2Response) - DESIRED_RESPONSE[1];
+    let question3Compatabilty = Math.abs(question3Response) - DESIRED_RESPONSE[2];
+    let question4Compatabilty = Math.abs(question4Response) - DESIRED_RESPONSE[3];
+    let question5Compatabilty = Math.abs(question5Response) - DESIRED_RESPONSE[4];
+    
+    console.log(question1Compatabilty);
+    console.log(question2Compatabilty);
+    console.log(question3Compatabilty);
+    console.log(question4Compatabilty);
+    console.log(question5Compatabilty);
+
+let totalCompatability = question1Compatabilty + question2Compatabilty + question3Compatabilty + question4Compatabilty + question5Compatabilty
+
+
+totalCompatability *= 100 / MAX_SCORE;
+totalCompatability = Math.round(totalCompatability);
+console.log(totalCompatability);
+
+
+
+    document.getElementById("compatabilty"). innerHTML = "Your score is: " +totalCompatability;
+}
+
+
+</script>
+
+
+</body>
+ 
+<p>For this application the lower your score the more compatible we are.
+    <br />
+    0-25 is Great Friends
+    <br />
+    26-55 is I think we'll get along
+    <br />
+    56-100 is get away from me!
+</p>
